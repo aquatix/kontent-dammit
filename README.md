@@ -15,7 +15,13 @@ Usage:
 ```
 import os
 TEMPLATE_DIRS = (
-    '/srv/projects/github/kontent-dammit/dammit', # this theme
-    os.path.dirname(os.path.dirname(__file__)) + '/kontent/templates/', # default dir
-    )
+    '/srv/projects/github/kontent-dammit/dammit', # dammIT theme
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'kontent/templates/'), # default kontent theme
+)
+
+
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), "static"),
+    '/srv/projects/github/kontent-dammit/dammit/static',
+)
 ```
