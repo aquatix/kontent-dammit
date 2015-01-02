@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block pagetitle %}Home{% endblock %}
+
+{% block content %}
+{% for article in articles %}
+{% include "article.html" %}
+{% endfor %}
+
+<p><a href="">{% trans 'Archive' %}</a></p>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base_generic.html" %}
+
+{% block pagetitle %}{{ article.title }}{% endblock %}
+
+{% block content %}
+{% include "article.html" %}
+&lt; previous | next &gt;
+{% endblock %}
