@@ -1,8 +1,43 @@
-<h1>{{ article.title }}</h1>
+	<article>
+		<header>
+			<h1><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h1>
+            {{ article.headline }}
+		</header>
 
-<h2>
-  <a href="{{ article.get_absolute_url }}">
-    {{ article.headline }}
-  </a>
-</h2>
-{{ article.body_html }}
+		{{ article.body_html }}
+
+		<?php if ($thisRant['nrOfComments'] > 0 && isset($rantsComments)) { ?>
+
+		<section>
+			<h2>Comments</h2>
+			{% if article.comments_enabled %}
+				$commentCounter = 1;
+				foreach($rantsComments as $comment)
+				{
+					$comment['message'] = str_replace("\n", "<br />\n", $comment['message']);
+					include 'comment.php';
+					$commentCounter++;
+				}
+			{% else %}
+				<span class="strike" title="Commenting has been disabled for this post">
+            {% endif %}
+		</section>
+
+        <footer>
+            <ul>
+                <li><span class="glyph" alt="Author">&#59170;</span> <?php echo $thisRant['username']; ?></li>
+                <li><span class="glyph" alt="Location">&#9873;</span> <?php echo $thisRant['location']; ?></li>
+                <li><span class="glyph" alt="Date">&#128340;</span> <time datetime="<?php echo getDatetimeStamp($thisRant['date']); ?>"><?php echo $thisRant['date']; ?></time></li>
+
+		{% if article.modified_times > 0 %}
+            <li><span class="glyph">&#9998;</span>
+			{% if article.modified_times == 1 %}
+				1 time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
+			{% else %}
+				echo $rants[$i]['modified'] . ' times, last time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
+            {% endif %}
+            </li>
+		{% endif %}
+            </ul>
+        </footer>
+	</article>

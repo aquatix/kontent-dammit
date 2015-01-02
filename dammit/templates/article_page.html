@@ -1,8 +1,14 @@
-{% extends "base_generic.html" %}
+{% with template_dir|add:"/base_generic.html" as template %}
+{% include template %}
+{% endwith %}
 
 {% block pagetitle %}{{ article.title }}{% endblock %}
 
 {% block content %}
-{% include "article.html" %}
+{{ template_dir }}
+
+{% with template_dir|add:"/article.html" as template %}
+{% include template %}
+{% endwith %}
 &lt; previous | next &gt;
 {% endblock %}

@@ -1,12 +1,16 @@
-{% extends "base_generic.html" %}
+{% with template_dir|add:"/base_generic.html" as template %}
+{% include template %}
+{% endwith %}
 {% load i18n %}
 
 {% block pagetitle %}Home{% endblock %}
 
 {% block content %}
+{% with template_dir|add:"/article.html" as template %}
 {% for article in articles %}
-{% include "article.html" %}
+{% include template %}
 {% endfor %}
+{% endwith %}
 
 <p><a href="">{% trans 'Archive' %}</a></p>
 
