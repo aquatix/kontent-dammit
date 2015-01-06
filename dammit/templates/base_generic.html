@@ -52,7 +52,7 @@
 
     <meta name="theme-color" content="#5C6448" />
 
-	<link rel="apple-touch-icon" href="<?php echo $skel['base_uri'] . 'themes/' . $skel['theme']; ?>/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="{% static "img/apple-touch-icon.png" %}" />
 	<!-- The is the icon for iOS's Web Clip.
 		- size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina display (IMHO, just go ahead and use the biggest one)
 		- To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
@@ -83,24 +83,6 @@ if (!Modernizr.inlinesvg)
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<?php /*
-	<!-- Application-specific meta tags -->
-	<!-- Windows 8 -->
-	<meta name="application-name" content="" />
-	<meta name="msapplication-TileColor" content="" />
-	<meta name="msapplication-TileImage" content="" />
-	<!-- Twitter -->
-	<meta name="twitter:card" content="">
-	<meta name="twitter:site" content="">
-	<meta name="twitter:title" content="">
-	<meta name="twitter:description" content="">
-	<meta name="twitter:url" content="">
-	<!-- Facebook -->
-	<meta property="og:title" content="" />
-	<meta property="og:description" content="" />
-	<meta property="og:url" content="" />
-	<meta property="og:image" content="" />
-*/ ?>
 </head>
 
 <body>
@@ -138,14 +120,13 @@ if (!Modernizr.inlinesvg)
 
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src='<?php echo $skel['base_uri'] . 'themes/' . $skel['theme']; ?>/js/jquery-1.9.1.min.js'>\x3C/script>")</script>
+<script>window.jQuery || document.write("<script src='{% static "js/jquery-1.9.1.min.js" %}'>\x3C/script>")</script>
 
 <!-- this is where we put our custom functions -->
 <!-- don't forget to concatenate and minify if needed -->
 <!-- @TODO: enable when needed <script src="<?php echo $skel['base_uri'] . 'themes/' . $skel['theme']; ?>/js/functions.js"></script>-->
 
-<?php //if(isset($skel['googleAnalyticsCode']) && false === $skel['testing']) { ?>
-<?php if(isset($skel['googleAnalyticsCode'])) { ?>
+{% if siteconfig.google_analytics_key and DEBUG == False %}
 <script>
 
   var _gaq = _gaq || [];
@@ -158,13 +139,12 @@ if (!Modernizr.inlinesvg)
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
-<?php } ?>
+{% endif %}
 
-<?php //if(isset($skel['piwikURL']) && isset($skel['piwikSiteID']) && false === $skel['testing']) { ?>
-<?php if(isset($skel['piwikURL']) && isset($skel['piwikSiteID'])) { ?>
+{% if siteconfig.google_analytics_uri and siteconfig.piwik_analytics_key and DEBUG == False %}
 <!-- Piwik -->
 <script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://<?php echo $skel['piwikURL']; ?>" : "http://<?php echo $skel['piwikURL']; ?>");
+{# var pkBaseURL = (("https:" == document.location.protocol) ? "https://<?php echo $skel['piwikURL']; ?>" : "http://<?php echo $skel['piwikURL']; ?>"); #}
 document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 </script><script type="text/javascript">
 try {
@@ -174,7 +154,7 @@ piwikTracker.enableLinkTracking();
 } catch( err ) {}
 </script><noscript><p><img src="{{ siteconfig.piwik_analytics_uri }}piwik.php?idsite={{ siteconfig.piwik_analytics_key }}" style="border:0" alt="" /></p></noscript>
 <!-- End Piwik Tracking Code -->
-<?php } ?>
+{% endif %}
 
 <!-- rendered in <?php echo (microtime() - $skel['starttime'])?> sec -->
 
