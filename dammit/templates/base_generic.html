@@ -18,7 +18,7 @@
 
 	<title>{% block title %}{% block pagetitle %}{% endblock %} | {{site.name}}{% endblock %}</title>
 
-	<meta name="title" content="<?php echo $page_name; ?>" />
+	<meta name="title" content="{{ page_name }}" />
 	<?php if (isset($skel['pageDescription'])) { ?>
 	<meta name="description" content="<?php echo $skel['pageDescription']; ?>" />
 	<?php } else { ?>
@@ -30,7 +30,7 @@
 	<meta name="google-site-verification" content="" />
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 
-	<meta name="author" content="<?php echo $skel['author']; ?>" />
+	<meta name="author" content="" />
 	<meta name="Copyright" content="Copyright <?php echo $skel['author'] . ' ' . $skel['startyear'] . "-" . date('Y'); ?> " />
 
 	<!--  Mobile Viewport Fix
@@ -90,8 +90,8 @@ if (!Modernizr.inlinesvg)
 <div id="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 <div id="header">
-<figure style="background-image:url('<?php echo $skel['base_uri'] . 'themes/' . $skel['theme'] . '/' . $skel['logo']; ?>');"></figure>
-<a href="<?php echo $skel['base_uri']; ?>"><img class="logo" src="{% static "img/dammit.svg" %}" alt="dammIT logo" /></a>
+	<figure style="background-image:url('{% static "image/" %}{{ siteconfig.logo }}');"></figure>
+	<a href="<?php echo $skel['base_uri']; ?>"><img class="logo" src="{% static "img/dammit.svg" %}" alt="dammIT logo" /></a>
 </div>
 
 <div id="content">
@@ -128,7 +128,6 @@ if (!Modernizr.inlinesvg)
 
 {% if siteconfig.google_analytics_key and DEBUG == False %}
 <script>
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '{{ siteconfig.google_analytics_key }}']);
   _gaq.push(['_trackPageview']);
