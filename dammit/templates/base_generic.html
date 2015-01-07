@@ -91,7 +91,7 @@ if (!Modernizr.inlinesvg)
 
 <div id="header">
 	<figure style="background-image:url('{% static "image/" %}{{ siteconfig.logo }}');"></figure>
-	<a href="<?php echo $skel['base_uri']; ?>"><img class="logo" src="{% static "img/dammit.svg" %}" alt="dammIT logo" /></a>
+	<a href="{% url 'home' %}"><img class="logo" src="{% static "img/dammit.svg" %}" alt="dammIT logo" /></a>
 </div>
 
 <div id="content">
