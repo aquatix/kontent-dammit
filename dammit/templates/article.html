@@ -11,13 +11,11 @@
 		<section>
 			<h2>Comments</h2>
 			{% if article.comments_enabled %}
-				$commentCounter = 1;
-				foreach($rantsComments as $comment)
-				{
-					$comment['message'] = str_replace("\n", "<br />\n", $comment['message']);
-					include 'comment.php';
-					$commentCounter++;
-				}
+				{% with template_dir|add:"/comment.html" as template %}
+				{% for comment in comments %}
+					{% include template %}
+				{% endfor %}
+				{% endwith %}
 			{% else %}
 				<span class="strike" title="Commenting has been disabled for this post">
             {% endif %}

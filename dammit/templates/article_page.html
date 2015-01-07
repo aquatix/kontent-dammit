@@ -7,19 +7,22 @@
 {% block content %}
 {{ template_dir }}
 
+<div class="browsenav"><span class="previous">&laquo;&nbsp;
+{% if previous_article %}
+<a href="{% url 'article-detail' previous_article.id %}">previous</a>
+{% else %}
+<a href="{% url 'home' %}">Home</a>
+{% endif %}
+</span><span class="next">
+{% if next_article %}
+<a href="{% url 'article-detail' next_article.id %}">next</a>
+{% else %}
+<a href="{% url 'home' %}">Home</a>
+{% endif %}
+&raquo;</span></div>
+
+{% endblock %}
+
 {% with template_dir|add:"/article.html" as template %}
 {% include template %}
 {% endwith %}
-
-{% if previous_article %}
-&lt; <a href="{% url 'article-detail' previous_article.id %}">previous</a>
-{% else %}
-&lt; previous
-{% endif %}
-&nbsp;|&nbsp;
-{% if next_article %}
-<a href="{% url 'article-detail' next_article.id %}">next</a> &gt;
-{% else %}
-next &gt;
-{% endif %}
-{% endblock %}
