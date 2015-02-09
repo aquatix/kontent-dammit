@@ -6,6 +6,7 @@
 
         {{ article.body_html }}
 
+	{% if article.comment_count > 0 %}
         <?php if ($thisRant['nrOfComments'] > 0 && isset($rantsComments)) { ?>
 
         <section>
@@ -20,6 +21,7 @@
                 <span class="strike" title="Commenting has been disabled for this post">
             {% endif %}
         </section>
+	{% endif %}
 
         <footer>
             <ul>
