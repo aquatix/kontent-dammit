@@ -1,6 +1,4 @@
-{% with template_dir|add:"/base_generic.html" as template %}
-{% include template %}
-{% endwith %}
+{% extends base_template %}
 {% load i18n %}
 
 {% block pagetitle %}Home{% endblock %}
