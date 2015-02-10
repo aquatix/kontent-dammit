@@ -96,13 +96,17 @@ if (!Modernizr.inlinesvg)
 
 <div id="content">
 
+{% block content %}
 	<header>
 
 		<h1><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h1>
 
 	</header>
 
-{% block content %}
+
+{% endblock %}
+
+{% block sidebar %}
 
 {% endblock %}
 
@@ -111,6 +115,8 @@ if (!Modernizr.inlinesvg)
 		<p><small>&copy; {{ site.startyear }} {{ current_year }} <a href="{% url 'about' %}">{{ site.author }}</a> under a <a href="{{ site.license_uri }}">{{ site.license_text }}</a> ]</small></p>
 
 	</footer>
+
+</div>
 
 </div>
 
