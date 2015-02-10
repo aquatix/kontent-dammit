@@ -134,20 +134,20 @@ if (!Modernizr.inlinesvg)
 
 		<div>
 			<a href="{% url 'feed' %}" title="Get my feed into your reader :)" class="glyph">&#59194;</a>
-			{% if site.profile_twitter %}
-			<a href="http://twitter.com/{{ site.profile_twitter }}" title="Me on Twitter" class="social">&#62217;</a>
+			{% if siteconfig.profile_twitter %}
+			<a href="http://twitter.com/{{ siteconfig.profile_twitter }}" title="Me on Twitter" class="social">&#62217;</a>
 			{% endif %}
-			{% if site.profile_googleplus %}
-			<a href="https://plus.google.com/{{ site.profile_googleplus }}" title="Me on Google+" class="social">&#62223;</a>
+			{% if siteconfig.profile_googleplus %}
+			<a href="https://plus.google.com/{{ siteconfig.profile_googleplus }}" title="Me on Google+" class="social">&#62223;</a>
 			{% endif %}
-			{% if site.profile_flickr %}
-			<a href="https://www.flickr.com/photos/{{ site.profile_flickr }}/" title="My pictures on Flickr" class="social">&#62211;</a>
+			{% if siteconfig.profile_flickr %}
+			<a href="https://www.flickr.com/photos/{{ siteconfig.profile_flickr }}/" title="My pictures on Flickr" class="social">&#62211;</a>
 			{% endif %}
-			{% if site.profile_picasa %}
-			<a href="https://www.picasa.com/{{ site.profile_picasa }}/" title="My pictures on Picasa" class="social">&#62277;</a>
+			{% if siteconfig.profile_picasa %}
+			<a href="https://www.picasa.com/{{ siteconfig.profile_picasa }}/" title="My pictures on Picasa" class="social">&#62277;</a>
 			{% endif %}
-			{% if site.profile_linkedin %}
-			<a href="http://linkedin.com/in/{{ site.profile_linkedin }}/" title="My profile on LinkedIn" class="social">&#62232;</a>
+			{% if siteconfig.profile_linkedin %}
+			<a href="http://linkedin.com/in/{{ siteconfig.profile_linkedin }}/" title="My profile on LinkedIn" class="social">&#62232;</a>
 			{% endif %}
 		</div>
 
