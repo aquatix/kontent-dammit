@@ -124,9 +124,8 @@ if (!Modernizr.inlinesvg)
 
 		<div class="pageversion">v<?php echo $skel['page_version']; ?></div>
 
-		<?php if (!isset($searchkey)) { $searchkey = ''; } ?>
-		<?php /*<form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="&#128269;" type="submit" class="searchbtn" /></div></form>*/ ?>
-		<form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="Find" type="submit" /></div></form>
+		{# <form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="&#128269;" type="submit" class="searchbtn" /></div></form>*/ ?> #}
+		<form style="margin-top: 1em;" action="{% url 'search' %}" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="{{ search_key }}" /><input name="searchbtn" value="Find" type="submit" /></div></form>
 
 		<h2>Distracted by</h2>
 		<?php echo buildMarksList(getMarks($skel, 0, $skel['nrOfMarksInNav'])); ?>
@@ -151,8 +150,6 @@ if (!Modernizr.inlinesvg)
 			<a href="http://linkedin.com/in/{{ site.profile_linkedin }}/" title="My profile on LinkedIn" class="social">&#62232;</a>
 			{% endif %}
 		</div>
-
-	</aside>
 
 {% endblock %}
 	</aside>
