@@ -106,19 +106,65 @@ if (!Modernizr.inlinesvg)
 
 {% endblock %}
 
+</div>
+
+	<aside>
 {% block sidebar %}
 
+		<nav>
+			<ol>
+				<li><a href="{% url 'home' %}" accesskey="h" title="Home"><span class="glyph">&#8962;</span> home</a></li>
+				<li><a href="{% url 'article_archive-list' %}" accesskey="a" title="View all post titles in the archive"><span class="glyph">&#128230;</span> archive</a></li>
+				<li><a href="{% url 'link_archive-list' %}" accesskey="m" title="View interesting links"><span class="glyph">&#128209;</span> blogmarks</a></li>
+				<li><a href="<?php echo $skel['base_uri'];?>p/books" accesskey="b" title="The list of books I've read or are going to consume"><span class="glyph">&#128213;</span> books</a></li>
+				<li><a href="<?php echo $skel['base_uri'];?>p/kudos" accesskey="k" title="View a list of sites that deserve kudos"><span class="glyph">&#128077;</span> kudos</a></li>
+				<li><a href="<?php echo $skel['base_uri'];?>p/about" accesskey="?" title="Information about the author"><span class="glyph">&#59170;</span> about</a></li>
+			</ol>
+		</nav>
+
+		<div class="pageversion">v<?php echo $skel['page_version']; ?></div>
+
+		<?php if (!isset($searchkey)) { $searchkey = ''; } ?>
+		<?php /*<form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="&#128269;" type="submit" class="searchbtn" /></div></form>*/ ?>
+		<form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="Find" type="submit" /></div></form>
+
+		<h2>Distracted by</h2>
+		<?php echo buildMarksList(getMarks($skel, 0, $skel['nrOfMarksInNav'])); ?>
+
+		<div class="content"><a href="{% url 'link_archive-list' %}">More blogmarks &raquo;</a></div>
+
+		<div>
+			<a href="{% url 'feed' %}" title="Get my feed into your reader :)" class="glyph">&#59194;</a>
+			{% if site.profile_twitter %}
+			<a href="http://twitter.com/{{ site.profile_twitter }}" title="Me on Twitter" class="social">&#62217;</a>
+			{% endif %}
+			{% if site.profile_googleplus %}
+			<a href="https://plus.google.com/{{ site.profile_googleplus }}" title="Me on Google+" class="social">&#62223;</a>
+			{% endif %}
+			{% if site.profile_flickr %}
+			<a href="https://www.flickr.com/photos/{{ site.profile_flickr }}/" title="My pictures on Flickr" class="social">&#62211;</a>
+			{% endif %}
+			{% if site.profile_picasa %}
+			<a href="https://www.picasa.com/{{ site.profile_picasa }}/" title="My pictures on Picasa" class="social">&#62277;</a>
+			{% endif %}
+			{% if site.profile_linkedin %}
+			<a href="http://linkedin.com/in/{{ site.profile_linkedin }}/" title="My profile on LinkedIn" class="social">&#62232;</a>
+			{% endif %}
+		</div>
+
+	</aside>
+
 {% endblock %}
+	</aside>
 
 	<footer>
 
-		<p><small>&copy; {{ site.startyear }} {{ current_year }} <a href="{% url 'about' %}">{{ site.author }}</a> under a <a href="{{ site.license_uri }}">{{ site.license_text }}</a> ]</small></p>
+		<p><small>&copy; {{ site.startyear }} {{ current_year }} <a href="{% url 'about' %}">{{ site.author }}</a> under a <a href="{{ site.license_uri }}">{{ site.license_text }}</a></small></p>
 
 	</footer>
 
 </div>
 
-</div>
 
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 	chromium.org/developers/how-tos/chrome-frame-getting-started -->
