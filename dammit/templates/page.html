@@ -1,0 +1,47 @@
+{% extends base_template %}
+
+{% block pagetitle %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+    <article>
+        <header>
+            <h1><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h1>
+            {{ page.headline }}
+        </header>
+
+        {{ page.body_html }}
+
+        <section>
+            <h2>Comments</h2>
+            {% if page.comments_enabled %}
+                {% with template_dir|add:"/comment.html" as template %}
+                {% for comment in comments %}
+                    {% include template %}
+                {% endfor %}
+                {% endwith %}
+            {% else %}
+                <span class="strike" title="Commenting has been disabled for this post">
+            {% endif %}
+        </section>
+
+        <footer>
+            <ul>
+                <li><span class="glyph" alt="Author">&#59170;</span> {{ page.author.name }}</li>
+		<li><span class="glyph" alt="Location">&#9873;</span> {{ page.location }}</li>
+		<li><span class="glyph" alt="Date">&#128340;</span> {{ page.pretty_date }}<time datetime="{#<?php echo getDatetimeStamp($thisRant['date']); ?>#}">{#<?php echo $thisRant['date']; ?>#}</time></li>
+
+        {% if page.modified_times > 0 %}
+            <li><span class="glyph">&#9998;</span>
+            {% if page.modified_times == 1 %}
+                1 time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
+            {% else %}
+                echo $rants[$i]['modified'] . ' times, last time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
+            {% endif %}
+            </li>
+        {% endif %}
+            </ul>
+        </footer>
+    </article>
+
+{% endblock %}
