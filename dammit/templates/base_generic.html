@@ -128,7 +128,11 @@ if (!Modernizr.inlinesvg)
 		<form style="margin-top: 1em;" action="{% url 'search' %}" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="{{ search_key }}" /><input name="searchbtn" value="Find" type="submit" /></div></form>
 
 		<h2>Distracted by</h2>
-		<?php echo buildMarksList(getMarks($skel, 0, $skel['nrOfMarksInNav'])); ?>
+		<ul class="content">
+			{% for blogmark in blogmarks %}
+			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.message }}</div></li>
+			{% endfor %}
+		</ul>
 
 		<div class="content"><a href="{% url 'link_archive-list' %}">More blogmarks &raquo;</a></div>
 

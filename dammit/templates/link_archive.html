@@ -1,0 +1,49 @@
+{% extends base_template %}
+{% load i18n %}
+
+{% block pagetitle %}Home{% endblock %}
+
+{#
+
+	$marksHTML = '';
+	$previousDate = '0000-00-00 00:00:00';
+
+	for ($i = 0; $i < count($marks); $i++)
+	{
+		$marksHTML .= "<div id=\"uri" . $marks[$i]['id'] . "\">\n";
+		/* Title */
+		$marksHTML .= "<h3><a href=\"" . $marks[$i]['uri'] . "\">" . $marks[$i]['title'] . "</a></h3>\n";
+		/* Info about the blogmark */
+		$marksHTML .= '<div class="info">';
+		if ($marks[$i]['modified'] > 0)
+		{
+			/* Modified at least once */
+			if ($marks[$i]['modified'] == 1)
+			{
+				$marksHTML .= 'Modified 1 time at ' . getLongDate($marks[$i]['modifiedDate']) . " " . getTime($marks[$i]['modifiedDate']);
+			} else
+			{
+				$marksHTML .= 'Modified ' . $marks[$i]['modified'] . ' times, last time at ' . getLongDate($marks[$i]['modifiedDate']) . " " . getTime($marks[$i]['modifiedDate']);
+			}
+			$marksHTML .= " | ";
+		}
+		$marksHTML .= $marks[$i]['location'];
+		$marksHTML .= " | <a href=\"" . markUri($marks[$i]) . "\">" . getMonthDate($marks[$i]['date']) . ", " . getTime($marks[$i]['date']) . "</a>";
+		$marksHTML .= "</div>\n";
+		/* Comment on the blogmark */
+		$marksHTML .= $marks[$i]['message'] . "\n";
+		$marksHTML .= "</div>\n\n";
+	}
+	return $marksHTML;
+#}
+
+{% block content %}
+{% with template_dir|add:"/link.html" as template %}
+{% for link in links %}
+{% include template %}
+{% endfor %}
+{% endwith %}
+
+<p><a href="">{% trans 'Archive' %}</a></p>
+
+{% endblock %}
