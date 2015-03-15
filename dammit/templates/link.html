@@ -1,4 +1,4 @@
-{#
+{% comment %}
 	$marksHTML = '';
 	$previousDate = '0000-00-00 00:00:00';
 
@@ -29,7 +29,10 @@
 		$marksHTML .= "</div>\n\n";
 	}
 	return $marksHTML;
-#}
+{% endcomment %}
+{% load markdown_deux_tags %}
 <div id="uri{{ link.slug }}">
 	<h3><a href="">{{ link.title }}</a></h3>
+	<div class="info">{{ modified }}{{ link.location }} | {# link.datetime #}</div>
+	{{ link.body|markdown:"default" }}
 </div>
