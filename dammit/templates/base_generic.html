@@ -130,7 +130,7 @@ if (!Modernizr.inlinesvg)
 		<h2>Distracted by</h2>
 		<ul class="content">
 			{% for blogmark in blogmarks %}
-			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.message }}</div></li>
+			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.body }}</div></li>
 			{% endfor %}
 		</ul>
 
@@ -160,7 +160,7 @@ if (!Modernizr.inlinesvg)
 
 	<footer>
 
-		<p><small>&copy; {{ site.startyear }} {{ current_year }} <a href="{% url 'page-detail' 'about' %}">{{ site.author }}</a> under a <a href="{{ site.license_uri }}">{{ site.license_text }}</a></small></p>
+		<p><small>&copy; {{ siteconfig.startyear }}&ndash;{{ current_year }} <a href="{% url 'page-detail' 'about' %}">{{ siteconfig.author }}</a> under a <a href="{{ siteconfig.license_uri }}">{{ siteconfig.license_text }}</a></small></p>
 
 	</footer>
 
