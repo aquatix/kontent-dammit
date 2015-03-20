@@ -90,7 +90,7 @@ if (!Modernizr.inlinesvg)
 <div id="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 <div id="header">
-	<figure style="background-image:url('{% static "image/" %}{{ siteconfig.logo }}');"></figure>
+	<figure style="background-image:url('{% static "images/" %}{{ siteconfig.logo }}');"></figure>
 	<a href="{% url 'home' %}"><img class="logo" src="{% static "img/dammit.svg" %}" alt="dammIT logo" /></a>
 </div>
 
@@ -102,7 +102,6 @@ if (!Modernizr.inlinesvg)
 		<h1><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h1>
 
 	</header>
-
 
 {% endblock %}
 
@@ -122,9 +121,11 @@ if (!Modernizr.inlinesvg)
 			</ol>
 		</nav>
 
+{% comment %}
 		<div class="pageversion">v<?php echo $skel['page_version']; ?></div>
 
-		{# <form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="&#128269;" type="submit" class="searchbtn" /></div></form>*/ ?> #}
+		<form style="margin-top: 1em;" action="<?php echo $skel['base_uri'];?>search" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="<?php echo $searchkey;?>" /><input name="searchbtn" value="&#128269;" type="submit" class="searchbtn" /></div></form>*/ ?>
+{% endcomment %}
 		<form style="margin-top: 1em;" action="{% url 'search' %}" method="post"><div><input type="text" class="searchfield" name="searchkey" size="12" maxlength="250" value="{{ search_key }}" /><input name="searchbtn" value="Find" type="submit" /></div></form>
 
 		<h2>Distracted by</h2>
