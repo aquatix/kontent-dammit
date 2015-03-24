@@ -1,3 +1,4 @@
+{% load kontenthelpers %}
     <article>
         <header>
             <h1><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h1>
@@ -23,12 +24,12 @@
             <ul>
                 <li><span class="glyph" alt="Author">&#59170;</span> {{ article.author.name }}</li>
 		<li><span class="glyph" alt="Location">&#9873;</span> {{ article.location }}</li>
-		<li><span class="glyph" alt="Date">&#128340;</span> {{ article.pretty_date }}<time datetime="{#<?php echo getDatetimeStamp($thisRant['date']); ?>#}">{#<?php echo $thisRant['date']; ?>#}</time></li>
+		<li><span class="glyph" alt="Date">&#128340;</span> {{ article.published_date|prettydate }}<time datetime="{{ article.published_date }}">{#<?php echo $thisRant['date']; ?>#}</time></li>
 
         {% if article.modified_times > 0 %}
             <li><span class="glyph">&#9998;</span>
             {% if article.modified_times == 1 %}
-                1 time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
+                1 time at {{ article.last_modified|prettydate }} {{ article.last_modified|timestamp }}
             {% else %}
                 echo $rants[$i]['modified'] . ' times, last time at ' . getLongDate($rants[$i]['modifiedDate']) . " " . getTime($rants[$i]['modifiedDate']);
             {% endif %}
