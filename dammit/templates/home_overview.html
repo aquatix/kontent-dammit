@@ -4,11 +4,22 @@
 {% block pagetitle %}Home{% endblock %}
 
 {% block content %}
+{% if not articles %}
+    <article>
+        <header>
+            <h1>No articles found</h1>
+        </header>
+	<p>This section has no content yet.</p>
+    </article>
+{% else %}
+
 {% with template_dir|add:"/article.html" as template %}
 {% for article in articles %}
 {% include template %}
 {% endfor %}
 {% endwith %}
+
+{% endif %}
 
 <p><a href="">{% trans 'Archive' %}</a></p>
 

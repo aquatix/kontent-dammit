@@ -38,11 +38,25 @@
 #}
 
 {% block content %}
+
+{% if not links %}
+
+    <article>
+        <header>
+            <h1>No links found</h1>
+        </header>
+	<p>This section has no content yet.</p>
+    </article>
+
+{% else %}
+
 {% with template_dir|add:"/link.html" as template %}
 {% for link in links %}
 {% include template %}
 {% endfor %}
 {% endwith %}
+
+{% endif %}
 
 <p><a href="">{% trans 'Archive' %}</a></p>
 
