@@ -25,7 +25,7 @@
             <ul>
                 <li><span class="glyph" alt="Author">&#59170;</span> {{ article.author.name }}</li>
 		<li><span class="glyph" alt="Location">&#9873;</span> {{ article.location }}</li>
-		<li><span class="glyph" alt="Date">&#128340;</span> <time datetime="{{ article.published_date|isodate }}">{{ article.published_date|prettydate }}, {{ article.published_date|timestamp }}</time></li>
+		<li><span class="glyph" alt="Date">&#128340;</span> <time datetime="{{ article.published_date|isodate }}" title="{{ article.published_date|simpledate }} {{ article.published_date|timestamp }}">{{ article.published_date|prettydate }}, {{ article.published_date|timestamp }}</time></li>
 
         {% if article.modified_times > 0 %}
             <li><span class="glyph">&#9998;</span>
