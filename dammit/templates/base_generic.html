@@ -130,9 +130,13 @@ if (!Modernizr.inlinesvg)
 
 		<h2>Distracted by</h2>
 		<ul class="content">
+			{% if not blogmarks %}
+			<li>No blogmarks yet</li>
+			{% else %}
 			{% for blogmark in blogmarks %}
 			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.body }}</div></li>
 			{% endfor %}
+			{% endif %}
 		</ul>
 
 		<div class="content"><a href="{% url 'link_archive-list' %}">More blogmarks &raquo;</a></div>
