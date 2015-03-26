@@ -31,8 +31,9 @@
 	return $marksHTML;
 {% endcomment %}
 {% load markdown_deux_tags %}
+{% load kontenthelpers %}
 <div id="uri{{ link.slug }}">
 	<h3><a href="">{{ link.title }}</a></h3>
-	<div class="info">{{ modified }}{{ link.location }} | {# link.datetime #}</div>
+	<div class="info">{{ modified }}{{ link.location }} | {{ link.published_date|isodate }}</div>
 	{{ link.body|markdown:"default" }}
 </div>
