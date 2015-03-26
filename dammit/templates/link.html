@@ -33,7 +33,7 @@
 {% load markdown_deux_tags %}
 {% load kontenthelpers %}
 <div id="uri{{ link.slug }}">
-	<h3><a href="">{{ link.title }}</a></h3>
-	<div class="info">{{ modified }}{{ link.location }} | {{ link.published_date|isodate }}</div>
+	<h3><a href="{{ link.link }}">{{ link.title }}</a></h3>
+	<div class="info" title="{{ link.published_date|simpledate }} {{ link.published_date|timestamp }}">{{ modified }}{{ link.location }} | {{ link.published_date|prettydate }}, {{ link.published_date|timestamp }}</div>
 	{{ link.body|markdown:"default" }}
 </div>
