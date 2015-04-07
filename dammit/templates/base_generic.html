@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
+{% load markdown_deux_tags %}
 <!doctype html>
 
 <!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
@@ -134,7 +135,7 @@ if (!Modernizr.inlinesvg)
 			<li>No blogmarks yet</li>
 			{% else %}
 			{% for blogmark in blogmarks %}
-			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.body }}</div></li>
+			<li><a href="{{ blogmark.uri }}">{{ blogmark.title }}</a> <div class="blogmarkmeta">{{ blogmark.body|markdown:"normal" }}</div></li>
 			{% endfor %}
 			{% endif %}
 		</ul>

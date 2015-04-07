@@ -35,5 +35,5 @@
 <div id="uri{{ link.slug }}">
 	<h3><a href="{{ link.link }}">{{ link.title }}</a></h3>
 	<div class="info" title="{{ link.published_date|simpledate }} {{ link.published_date|timestamp }}">{{ modified }}{{ link.location }} | {{ link.published_date|prettydate }}, {{ link.published_date|timestamp }}</div>
-	{{ link.body|markdown:"default" }}
+	{{ link.body|markdown:"normal" }}
 </div>
