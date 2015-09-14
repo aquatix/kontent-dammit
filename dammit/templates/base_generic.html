@@ -116,9 +116,11 @@ if (!Modernizr.inlinesvg)
 				<li><a href="{% url 'home' %}" accesskey="h" title="Home"><span class="glyph">&#8962;</span> home</a></li>
 				<li><a href="{% url 'article_archive-list' %}" accesskey="a" title="View all post titles in the archive"><span class="glyph">&#128230;</span> archive</a></li>
 				<li><a href="{% url 'link_archive-list' %}" accesskey="m" title="View interesting links"><span class="glyph">&#128209;</span> blogmarks</a></li>
+{% comment %}
 				<li><a href="{% url 'page-detail' 'books' %}" accesskey="b" title="The list of books I've read or are going to consume"><span class="glyph">&#128213;</span> books</a></li>
 				<li><a href="{% url 'page-detail' 'kudos' %}" accesskey="k" title="View a list of sites that deserve kudos"><span class="glyph">&#128077;</span> kudos</a></li>
 				<li><a href="{% url 'page-detail' 'about' %}" accesskey="?" title="Information about the author"><span class="glyph">&#59170;</span> about</a></li>
+{% endcomment %}
 			</ol>
 		</nav>
 
